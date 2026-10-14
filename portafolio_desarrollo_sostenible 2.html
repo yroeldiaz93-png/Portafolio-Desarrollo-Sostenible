@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio | Desarrollo Sostenible</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6ef;
+  color: #24352a;
+  line-height: 1.7;
+}
+
+/* =========================
+   PORTADA CON IMAGEN
+   PEGA TU URL EN background-image
+========================= */
+
+.hero {
+  background-color: #193827;
+  background-image:
+    linear-gradient(
+      rgba(25,55,38,0.48),
+      rgba(25,55,38,0.48)
+    ),
+    url("https://drive.google.com/file/d/1m1RutOcGv1a7Cfdr1ricSzoGPCmQbDiS/view?usp=sharing");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 65px 20px 50px;
+  color: white;
+  width: 100%;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 850px;
+}
+
+.small-title {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #d8e7bd;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 8vw, 82px);
+  line-height: 1.05;
+  margin-bottom: 25px;
+  font-weight: 800;
+}
+
+.hero > .hero-content > p {
+  font-size: 19px;
+  max-width: 650px;
+  margin: auto;
+  color: #eef4e7;
+}
+
+.data-box {
+  margin: 35px auto 0;
+  max-width: 700px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.data {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.30);
+  border-radius: 14px;
+  padding: 15px;
+  backdrop-filter: blur(5px);
+  overflow-wrap: anywhere;
+}
+
+.data strong {
+  display: block;
+  color: #d7e9b8;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.data span { font-size: 15px; }
+
+/* =========================
+   NAVEGACIÓN
+========================= */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #193827;
+  padding: 13px;
+  text-align: center;
+  box-shadow: 0 3px 15px rgba(0,0,0,.15);
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 9px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.nav a:hover { color: #cfe5aa; }
+
+/* =========================
+   SECCIONES GENERALES
+========================= */
+
+.section {
+  max-width: 1050px;
+  margin: auto;
+  padding: 75px 22px;
+  scroll-margin-top: 65px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.section-number {
+  color: #779d55;
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+.section-title h2 {
+  font-size: clamp(30px, 5vw, 48px);
+  color: #193827;
+  margin: 10px 0;
+  line-height: 1.2;
+}
+
+.section-title p {
+  max-width: 650px;
+  margin: auto;
+  color: #667268;
+}
+
+.card {
+  background: white;
+  border-radius: 24px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 35px rgba(33,55,39,.08);
+  border: 1px solid #e5eadf;
+}
+
+.card h3 {
+  color: #31583b;
+  margin-bottom: 15px;
+  font-size: 23px;
+}
+
+.card p { color: #59655c; }
+
+/* =========================
+   PRESENTACIÓN PERSONAL
+========================= */
+
+.profile {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.profile-photo {
+  min-height: 400px;
+  border-radius: 25px;
+  background: #e4eadb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #63715f;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  object-fit: cover;
+  border-radius: 22px;
+}
+
+.image-hint {
+  display: none;
+  padding: 20px;
+  text-align: center;
+  color: #63715f;
+}
+
+/* =========================
+   ODS
+========================= */
+
+.ods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.ods span {
+  background: #e3edd4;
+  color: #31583b;
+  padding: 8px 15px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+/* =========================
+   PROYECTOS
+========================= */
+
+.project {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-number {
+  font-size: 70px;
+  font-weight: 900;
+  color: #edf2e8;
+  position: absolute;
+  right: 20px;
+  top: 5px;
+}
+
+.project-content {
+  position: relative;
+  z-index: 2;
+}
+
+.label, .tag {
+  display: inline-block;
+  background: #31583b;
+  color: white;
+  padding: 6px 13px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.info {
+  background: #f4f7f0;
+  padding: 20px;
+  border-radius: 15px;
+  color: #59655c;
+}
+
+.info strong {
+  color: #31583b;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* =========================
+   REFLEXIONES
+========================= */
+
+.question {
+  border-left: 5px solid #779d55;
+  padding: 20px 25px;
+  margin-bottom: 25px;
+  background: white;
+  border-radius: 0 18px 18px 0;
+  box-shadow: 0 7px 25px rgba(33,55,39,.06);
+}
+
+.question h3 {
+  color: #31583b;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.question p { color: #59655c; }
+
+/* =========================
+   HABILIDADES
+========================= */
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.skill {
+  background: white;
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(33,55,39,.07);
+  border-top: 4px solid #779d55;
+}
+
+.skill-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.skill h3 {
+  color: #31583b;
+  margin-bottom: 8px;
+}
+
+/* =========================
+   GALERÍA DE EVIDENCIAS
+========================= */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+  align-items: start;
+}
+
+.gallery-card {
+  background: white;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(33,55,39,.08);
+  border: 1px solid #e5eadf;
+  min-width: 0;
+}
+
+.image-placeholder {
+  height: 270px;
+  background: #e5eadf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #687467;
+  overflow: hidden;
+  padding: 0;
+}
+
+.image-placeholder img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gallery-info {
+  padding: 23px;
+  overflow-wrap: anywhere;
+}
+
+.gallery-info h3 {
+  color: #31583b;
+  margin-bottom: 10px;
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+.gallery-info p {
+  color: #59655c;
+  margin-bottom: 12px;
+}
+
+.grade {
+  margin-top: 15px;
+  padding: 12px;
+  background: #edf4e5;
+  border-radius: 12px;
+  color: #31583b;
+  font-weight: bold;
+}
+
+/* =========================
+   REFLEXIÓN FINAL
+========================= */
+
+.final {
+  background: #193827;
+  color: white;
+  border-radius: 30px;
+  padding: 45px;
+}
+
+.final h2 {
+  font-size: clamp(29px, 5vw, 36px);
+  margin-bottom: 20px;
+}
+
+.final p {
+  color: #dce7d8;
+  margin-bottom: 15px;
+}
+
+/* =========================
+   PIE DE PÁGINA
+========================= */
+
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  background: #11291c;
+  color: #bfcdbd;
+}
+
+.footer strong { color: white; }
+
+/* =========================
+   ADAPTACIÓN A CELULARES
+========================= */
+
+@media(max-width: 750px) {
+  .data-box,
+  .profile,
+  .info-grid,
+  .skills,
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 50px 18px 35px;
+  }
+
+  .hero h1 { font-size: clamp(40px, 12vw, 62px); }
+
+  .hero > .hero-content > p { font-size: 16px; }
+
+  .nav {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .nav a {
+    font-size: 11px;
+    margin: 0 6px;
+  }
+
+  .section { padding: 55px 16px; }
+
+  .card { padding: 24px; }
+
+  .profile-photo { min-height: 300px; }
+
+  .profile-photo img { min-height: 300px; }
+
+  .final { padding: 30px 23px; }
+
+  .image-placeholder { height: 240px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     PORTADA
+     CAMBIA SOLO EL LINK DE LA IMAGEN
+     LA IMAGEN TERMINA DEBAJO DE LOS DATOS
+========================= -->
+
+<section class="hero" id="inicio">
+  <div class="hero-content">
+
+    <div class="small-title">Portafolio académico</div>
+
+    <h1>Desarrollo<br>Sostenible</h1>
+
+    <p>
+      Una recopilación de aprendizajes, experiencias, actividades
+      y reflexiones sobre la importancia de construir un futuro
+      más sostenible.
+    </p>
+
+    <div class="data-box">
+
+      <div class="data">
+        <strong>Participante</strong>
+        <span>Yroel Bladimir Diaz Tavarez</span>
+      </div>
+
+      <div class="data">
+        <strong>Matrícula</strong>
+        <span>100105962</span>
+      </div>
+
+      <div class="data">
+        <strong>Facilitador</strong>
+        <span>Jiilma Suero Castro</span>
+      </div>
+
+      <div class="data">
+        <strong>Materia</strong>
+        <span>Ser humano y desarrollo sostenible</span>
+      </div>
+
+      <div class="data">
+        <strong>Carrera</strong>
+        <span>Agrimensura</span>
+      </div>
+
+      <div class="data">
+        <strong>Universidad</strong>
+        <span>Universidad Abierta para Adultos (UAPA)</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NAVEGACIÓN -->
+
+<nav class="nav">
+  <a href="#presentacion">Presentación</a>
+  <a href="#proyectos">Proyectos</a>
+  <a href="#reflexion">Reflexión</a>
+  <a href="#habilidades">Habilidades</a>
+  <a href="#galeria">Galería</a>
+  <a href="#final">Cierre</a>
+</nav>
+
+<!-- I. PRESENTACIÓN PERSONAL -->
+
+<section class="section" id="presentacion">
+  <div class="section-title">
+    <div class="section-number">01 · PRESENTACIÓN PERSONAL</div>
+    <h2>Conociéndome</h2>
+    <p>Una breve mirada a mi experiencia, intereses y motivaciones dentro de la asignatura.</p>
+  </div>
+
+  <div class="profile">
+
+    <div class="profile-photo">
+      <!-- REEMPLAZA URL_FOTO_PERSONAL CON EL LINK DE TU FOTO -->
+      <img
+        src="https://drive.google.com/file/d/19ZfnVVX91MkKK3uG2g8tUKnh9OUG8yqo/view?usp=sharing"
+        alt="Fotografía del participante"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+      >
+      <span class="image-hint">
+        📷<br><br>
+        <strong>FOTO DEL PARTICIPANTE</strong><br>
+        Reemplaza URL_FOTO_PERSONAL por el enlace de tu imagen.
+      </span>
+    </div>
+
+    <div class="card">
+      <h3>Mi biografía</h3>
+
+      <p>
+        Mi nombre es Yroel Diaz y soy estudiante de la Universidad
+        Abierta para Adultos (UAPA). Durante esta asignatura de
+        Ser Humano y Desarrollo Sostenible, he tenido la oportunidad
+        de aprender sobre la importancia de cuidar el medio ambiente
+        y utilizar responsablemente los recursos naturales.
+      </p>
+
+      <br>
+
+      <p>
+        Me interesa el desarrollo sostenible porque considero que
+        todos podemos contribuir a tener una comunidad más limpia
+        y un planeta más saludable. Estos conocimientos se relacionan
+        con mis aspiraciones futuras, ya que deseo prepararme
+        profesionalmente y aplicar lo aprendido para ayudar a resolver
+        problemas ambientales.
+      </p>
+
+      <br>
+
+      <p>
+        Me motiva adquirir nuevos conocimientos, crear conciencia
+        y comprender que nuestras acciones pueden contribuir a un
+        futuro mejor.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- II. PROYECTOS Y ACTIVIDADES -->
+
+<section class="section" id="proyectos">
+  <div class="section-title">
+    <div class="section-number">02 · PROYECTOS Y ACTIVIDADES</div>
+    <h2>Lo que hice</h2>
+    <p>Actividades realizadas durante la asignatura y aprendizajes obtenidos.</p>
+  </div>
+
+  <div class="card project">
+    <div class="project-number">01</div>
+    <div class="project-content">
+      <span class="label">FORO INTERACTIVO</span>
+      <h3>Foro sobre desarrollo sostenible</h3>
+      <p>
+        Reflexioné sobre la importancia del desarrollo sostenible
+        y la participación de las personas en el cuidado ambiental.
+      </p>
+
+      <div class="ods">
+        <span>🌍 Producción y consumo responsables</span>
+        <span>🌱 Acción por el clima</span>
+      </div>
+
+      <div class="info-grid">
+        <div class="info">
+          <strong>Mi participación</strong>
+          Compartí mis ideas y reflexioné sobre la importancia
+          de proteger los recursos naturales.
+        </div>
+        <div class="info">
+          <strong>Acciones sostenibles</strong>
+          Consideré el reciclaje, el ahorro de agua y energía
+          y la reducción de residuos.
+        </div>
+        <div class="info">
+          <strong>Resultado</strong>
+          Fortalecí mis conocimientos sobre la responsabilidad
+          individual y colectiva en la protección ambiental.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card project">
+    <div class="project-number">02</div>
+    <div class="project-content">
+      <span class="label">ACTIVIDAD MEDIOAMBIENTAL</span>
+      <h3>Cápsulas de video</h3>
+      <p>
+        La actividad buscó crear conciencia sobre los problemas
+        ambientales y presentar recomendaciones para contribuir
+        a su solución.
+      </p>
+
+      <div class="ods">
+        <span>🌎 Acción por el clima</span>
+      </div>
+
+      <div class="info-grid">
+        <div class="info">
+          <strong>Mi participación</strong>
+          Investigué información y preparé el contenido de las cápsulas
+          sobre el tema ambiental.
+        </div>
+        <div class="info">
+          <strong>Acciones sostenibles</strong>
+          Promoví hábitos responsables y mensajes sobre el cuidado
+          del medio ambiente.
+        </div>
+        <div class="info">
+          <strong>Resultado</strong>
+          Aprendí a comunicar ideas sobre el cuidado del planeta
+          de manera clara y educativa.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card project">
+    <div class="project-number">03</div>
+    <div class="project-content">
+      <span class="label">MI COMUNIDAD</span>
+      <h3>Problemas ambientales de mi comunidad</h3>
+      <p>
+        Identifiqué problemas ambientales que afectan a mi comunidad
+        y reflexioné sobre posibles soluciones.
+      </p>
+
+      <div class="ods">
+        <span>🏘️ Ciudades y comunidades sostenibles</span>
+      </div>
+
+      <div class="info-grid">
+        <div class="info">
+          <strong>Mi participación</strong>
+          Analicé situaciones como la acumulación de basura,
+          la contaminación y la necesidad de mantener limpios
+          los espacios públicos.
+        </div>
+        <div class="info">
+          <strong>Acciones sostenibles</strong>
+          Observé el entorno, identifiqué problemas y propuse
+          posibles soluciones.
+        </div>
+        <div class="info">
+          <strong>Resultado</strong>
+          Comprendí que la participación ciudadana es fundamental
+          para mejorar las condiciones ambientales de la comunidad.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- III. REFLEXIÓN -->
+
+<section class="section" id="reflexion">
+  <div class="section-title">
+    <div class="section-number">03 · APRENDIZAJE Y REFLEXIÓN</div>
+    <h2>Lo que aprendí</h2>
+    <p>Reflexiones personales sobre mi experiencia y mi relación con el desarrollo sostenible.</p>
+  </div>
+
+  <div class="question">
+    <h3>01 · ¿Cuál ha sido la actividad más reveladora para ti y por qué?</h3>
+    <p>
+      La actividad que más me ha impactado ha sido la elaboración
+      de las cápsulas sobre desarrollo sostenible, porque me permitió
+      comprender mejor los problemas ambientales y la importancia
+      de orientar a otras personas sobre cómo cuidar el planeta.
+    </p>
+  </div>
+
+  <div class="question">
+    <h3>02 · ¿Qué aprendizaje significativo has obtenido sobre la relación entre el ser humano y el desarrollo sostenible?</h3>
+    <p>
+      He aprendido que los seres humanos dependemos de los recursos
+      naturales y que debemos utilizarlos responsablemente. Nuestras
+      acciones pueden beneficiar o perjudicar al medio ambiente,
+      por lo que es necesario adoptar hábitos sostenibles.
+    </p>
+  </div>
+
+  <div class="question">
+    <h3>03 · ¿Qué importancia tienen las actividades para comprender los desafíos globales y tu papel como agente de cambio?</h3>
+    <p>
+      Estas actividades me ayudaron a comprender que problemas como
+      la contaminación y el cambio climático afectan a toda la sociedad.
+      También aprendí que puedo contribuir mediante pequeñas acciones
+      y motivando a otras personas a cuidar su entorno.
+    </p>
+  </div>
+
+  <div class="question">
+    <h3>04 · ¿Cómo te sientes respecto a tu capacidad para contribuir a un futuro más sostenible?</h3>
+    <p>
+      Me siento motivado y capaz de aportar a un futuro más sostenible.
+      Aunque mis acciones sean pequeñas, considero que pueden generar
+      cambios positivos si las practico constantemente y motivo
+      a otras personas a hacer lo mismo.
+    </p>
+  </div>
+</section>
+
+<!-- IV. HABILIDADES -->
+
+<section class="section" id="habilidades">
+  <div class="section-title">
+    <div class="section-number">04 · HABILIDADES Y COMPETENCIAS</div>
+    <h2>Lo que desarrollé</h2>
+    <p>Competencias fortalecidas durante las actividades de la asignatura.</p>
+  </div>
+
+  <div class="skills">
+    <div class="skill">
+      <div class="skill-icon">🌿</div>
+      <h3>Pensamiento crítico ambiental</h3>
+      <p>Aprendí a identificar problemas ambientales y reflexionar sobre sus causas y consecuencias.</p>
+    </div>
+
+    <div class="skill">
+      <div class="skill-icon">🔎</div>
+      <h3>Investigación</h3>
+      <p>Desarrollé la capacidad de buscar información para realizar mis tareas y comprender los temas estudiados.</p>
+    </div>
+
+    <div class="skill">
+      <div class="skill-icon">💬</div>
+      <h3>Comunicación</h3>
+      <p>Practiqué la organización y presentación de ideas sobre el desarrollo sostenible.</p>
+    </div>
+
+    <div class="skill">
+      <div class="skill-icon">💡</div>
+      <h3>Resolución de problemas</h3>
+      <p>Aprendí a proponer soluciones para reducir la contaminación y mejorar el entorno.</p>
+    </div>
+
+    <div class="skill">
+      <div class="skill-icon">💧</div>
+      <h3>Responsabilidad ambiental</h3>
+      <p>Comprendí la importancia de ahorrar agua y energía, reducir los residuos y mantener limpios los espacios.</p>
+    </div>
+
+    <div class="skill">
+      <div class="skill-icon">🌎</div>
+      <h3>Aplicación práctica</h3>
+      <p>Relacioné lo aprendido con la identificación de problemas ambientales de mi comunidad y la propuesta de acciones sostenibles.</p>
+    </div>
+  </div>
+</section>
+
+<!-- V. GALERÍA DE EVIDENCIAS
+     TODAS LAS TARJETAS ESTÁN DENTRO DE .gallery
+     PARA CADA FOTO, CAMBIA EL src POR SU URL
+-->
+
+<section class="section" id="galeria">
+  <div class="section-title">
+    <div class="section-number">05 · GALERÍA DE EXPERIENCIAS</div>
+    <h2>Mis evidencias</h2>
+    <p>Una colección visual de mis tareas, proyectos y aprendizajes durante la asignatura.</p>
+  </div>
+
+  <div class="gallery">
+
+    <!-- TEMAS 1 Y 2 -->
+    <div class="gallery-card">
+      <div class="image-placeholder">
+        <img src="https://drive.google.com/file/d/16TLRUTKcoo5YHuuE42QuFOm9twPIrcQN/view?usp=sharing" alt="Evidencias de los temas 1 y 2"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="image-hint">📷<br>Pega aquí el enlace de la imagen de los temas 1 y 2.</span>
+      </div>
+      <div class="gallery-info">
+        <span class="tag">TEMAS 1 Y 2</span>
+        <h3>El ser humano y su contexto</h3>
+        <p><strong>Calificación:</strong> 100</p>
+          <p><strong>Lo que aprendí:</strong>
+          Aprendí que el ser humano forma parte de un entorno social
+          y natural que influye en su desarrollo. Comprendí que nuestras
+          acciones afectan a otras personas y al medio ambiente, por lo
+          que debemos actuar con responsabilidad y respeto.
+        </p>
+      </div>
+    </div>
+
+    <!-- TEMA 3 -->
+    <div class="gallery-card">
+      <div class="image-placeholder">
+        <img src="https://drive.google.com/file/d/1UnthgFiEv01Cqhu-ErFBpNELrOzuijG7/view?usp=sharing" alt="Evidencia del tema 3"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="image-hint">📷<br>Pega aquí el enlace de la imagen del tema 3.</span>
+      </div>
+      <div class="gallery-info">
+        <span class="tag">TEMA 3</span>
+        <h3>Desarrollo sostenible y sus variantes</h3>
+        <p><strong>Calificación:</strong> 100</p>
+        <p><strong>Lo que aprendí:</strong>
+          Aprendí que el desarrollo sostenible busca satisfacer las
+          necesidades actuales sin perjudicar a las futuras generaciones.
+          Comprendí que es importante equilibrar el crecimiento económico,
+          el bienestar social y el cuidado del medio ambiente.
+        </p>
+      </div>
+    </div>
+
+    <!-- TEMA 4 -->
+    <div class="gallery-card">
+      <div class="image-placeholder">
+        <img src="https://drive.google.com/file/d/11hOasMv9I1aKPGAXxIS9Jtp5LMU29xn_/view?usp=sharing" alt="Evidencia del tema 4"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="image-hint">📷<br>Pega aquí el enlace de la imagen del tema 4.</span>
+      </div>
+      <div class="gallery-info">
+        <span class="tag">TEMA 4</span>
+        <h3>Foro interactivo</h3>
+        <p><strong>Calificación:</strong> 0 </p>
+        <p><strong>Lo que aprendí:</strong>
+          Aprendí que compartir ideas y escuchar diferentes opiniones
+          ayuda a comprender mejor los problemas ambientales. También
+          reconocí la importancia de la participación y la responsabilidad
+          individual en la construcción de un futuro sostenible.
+        </p>
+      </div>
+    </div>
+
+    <!-- TAREA 5 -->
+    <div class="gallery-card">
+      <div class="image-placeholder">
+        <img src="https://drive.google.com/file/d/1veYKZKl3kI6suyEFZ29KW2XUoN0Li-GC/view?usp=sharing" alt="Evidencia de la tarea 5"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="image-hint">📷<br>Pega aquí el enlace de la tarea 5.</span>
+      </div>
+      <div class="gallery-info">
+        <span class="tag">TAREA 5</span>
+        <h3>Escenarios modificados</h3>
+        <p>Actividad sobre los cambios que las acciones humanas pueden provocar en el medio ambiente.</p>
+        <div class="grade">⭐ Calificación: 95 </div>
+        <p><strong>Lo que aprendí:</strong>
+          Aprendí que las acciones humanas pueden modificar el medio
+          ambiente de manera positiva o negativa. Por eso, debemos
+          actuar responsablemente para proteger los recursos naturales
+          y mejorar nuestra calidad de vida.
+        </p>
+      </div>
+    </div>
+
+    <!-- TAREA 6 -->
+    <div class="gallery-card">
+      <div class="image-placeholder">
+        <img src="https://drive.google.com/file/d/1Og7zIZf1URgVsuQm9wbEOnXeBXAVWEjK/view?usp=sharing" alt="Evidencia de la tarea 6"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="image-hint">📷<br>Pega aquí el enlace de la tarea 6.</span>
+      </div>
+      <div class="gallery-info">
+        <span class="tag">TAREA 6</span>
+        <h3>Los problemas socioambientales y su repercusión en el desarrollo</h3>
+        <p>Estudio de los problemas sociales y ambientales que afectan a las personas y la naturaleza.</p>
+        <div class="grade">⭐ Calificación: 90 </div>
+        <p><strong>Lo que aprendí:</strong>
+          Aprendí que problemas como la contaminación, la deforestación
+          y la pobreza afectan tanto a las personas como a la naturaleza.
+          Es importante buscar soluciones que favorezcan el bienestar
+          social y ambiental.
+        </p>
+        <p><strong>Comentario del facilitador:</strong> Bien Yroel, pero faltan elementos en la introducción y no hay evidencias, datos, estadísticas, ejemplos o casos de estudio que respalden tus argumentos. Revisa la redacción del tema cinco. Sigue adelante</p>
+      </div>
+    </div>
+
+    <!-- TAREA 7 -->
+    <div class="gallery-card">
+      <div class="image-placeholder">
+        <img src="https://drive.google.com/file/d/18RucJvORXOdA7VRJ48N41PSOPsNoACkr/view?usp=sharing" alt="Evidencia de la tarea 7"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="image-hint">📷<br>Pega aquí el enlace de la tarea 7.</span>
+      </div>
+      <div class="gallery-info">
+        <span class="tag">TAREA 7</span>
+        <h3>Las energías y sus implicaciones para el desarrollo sostenible</h3>
+        <p>Análisis de las ventajas y desventajas de las fuentes de energía.</p>
+        <div class="grade">⭐ Calificación: 100 </div>
+        <p><strong>Lo que aprendí:</strong>
+          Comprendí que las energías renovables, como la solar y la
+          eólica, ayudan a reducir la contaminación, mientras que los
+          combustibles fósiles perjudican el medio ambiente. Por eso,
+          debemos promover el uso de energías limpias.
+        </p>
+      </div>
+    </div>
+
+    <!-- TAREA 8 -->
+    <div class="gallery-card">
+      <div class="image-placeholder">
+        <img src="https://drive.google.com/file/d/1jP2Jx695n8txnj-r_TTWM-zWNfFN2VDf/view?usp=sharing" alt="Evidencia de la tarea 8"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="image-hint">📷<br>Pega aquí el enlace de la tarea 8.</span>
+      </div>
+      <div class="gallery-info">
+        <span class="tag">TAREA 8</span>
+        <h3>Estrategias para la sustentabilidad</h3>
+        <p>Acciones que permiten utilizar los recursos de manera responsable.</p>
+        <div class="grade">⭐ Calificación: 92 </div>
+        <p><strong>Lo que aprendí:</strong>
+          Aprendí que podemos contribuir a la sustentabilidad ahorrando
+          agua y electricidad, reciclando y evitando desperdiciar recursos.
+          Estas pequeñas acciones ayudan a cuidar el planeta.
+        </p>
+        <p><strong>Comentario del facilitador:</strong> Saludos Yroel. La introducción no se trabaja en pasado. No colocaste la bibliografía asignada para la tarea. Cuida la ortografía.</p>
+      </div>
+    </div>
+
+    <!-- TRABAJO FINAL -->
+    <div class="gallery-card">
+      <div class="image-placeholder">
+        <img src="https://drive.google.com/file/d/1BGciTO58lwDjQ1-cgsjjHVbRF95Lh6fU/view?usp=sharing" alt="Evidencia del trabajo final"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="image-hint">📷<br>Pega aquí el enlace del trabajo final.</span>
+      </div>
+      <div class="gallery-info">
+        <span class="tag">TRABAJO FINAL</span>
+        <h3>Consumo responsable y acciones por el clima</h3>
+        <p>Trabajo sobre el consumo responsable y las acciones para combatir el cambio climático.</p>
+        <div class="grade">⭐ Calificación: 85</div>
+        <p><strong>Lo que aprendí:</strong>
+          Aprendí que consumir responsablemente significa comprar solo
+          lo necesario, reutilizar materiales y reducir los residuos.
+          También comprendí que cada persona puede contribuir a combatir
+          el cambio climático mediante acciones cotidianas.
+        </p>
+        <p><strong>Comentario del facilitador:</strong>
+Bien Yroel, pero te apoyaste de manera constante en la lectura y te faltó tiempo del requerido. Cuida la dicción. 
+</p>
+      </div>
+    </div>
+
+    <!-- CUESTIONARIO -->
+    <div class="gallery-card">
+      <div class="image-placeholder">
+        <img src="https://drive.google.com/uc?export=view&id=ID_DE_LA_IMAGEN "
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="image-hint">📷<br>Pega aquí el enlace del cuestionario.</span>
+      </div>
+      <div class="gallery-info">
+        <span class="tag">AUTOEVALUACIÓN</span>
+        <h3>Cuestionario de autoevaluación</h3>
+        <p>Actividad de repaso de los conocimientos adquiridos en la asignatura.</p>
+        <div class="grade">⭐ Calificación: 90</div>
+        <p><strong>Lo que aprendí:</strong>
+          Esta actividad me permitió repasar los conocimientos adquiridos
+          sobre el ser humano y el desarrollo sostenible. También pude
+          reconocer la importancia de asumir compromisos para cuidar el
+          medio ambiente y construir un futuro mejor.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VI. REFLEXIÓN FINAL -->
+
+<section class="section" id="final">
+  <div class="final">
+    <div class="section-number">CIERRE DEL PORTAFOLIO</div>
+    <h2>Reflexión final</h2>
+
+    <p>
+      La asignatura Ser Humano y Desarrollo Sostenible ha sido una
+      experiencia importante para mi formación personal y académica.
+      A través de las actividades realizadas, comprendí que cuidar el
+      medio ambiente es una responsabilidad compartida y que todos
+      podemos contribuir a mejorar nuestro entorno.
+    </p>
+
+    <p>
+      Los conocimientos adquiridos me motivan a practicar hábitos más
+      responsables, utilizar adecuadamente los recursos naturales y
+      promover el cuidado de la comunidad.
+    </p>
+
+    <p>
+      Considero que este aprendizaje será útil en mi vida diaria y en
+      mi futuro profesional, porque el desarrollo sostenible requiere
+      compromiso, conciencia y participación de todos.
+    </p>
+  </div>
+</section>
+
+<!-- PIE DE PÁGINA -->
+
+<footer class="footer">
+  <strong>Yroel Diaz</strong>
+  <br>
+  Ser Humano y Desarrollo Sostenible · UAPA
+  <br><br>
+  🌱 Aprender · Reflexionar · Actuar · Transformar
+</footer>
+
+</body>
+</html>
